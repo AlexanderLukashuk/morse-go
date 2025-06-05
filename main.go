@@ -52,6 +52,7 @@ var language string
 func main() {
 	var input string
 	var output string
+	var coder_option string
 
 	fmt.Println("1) English")
 	fmt.Println("2) Russian")
@@ -73,13 +74,24 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 
+	fmt.Print("1) Coder")
+	fmt.Print("2) Decoder")
+	fmt.Print("Choose option: ")
+
+	coder_option, _ = reader.ReadString('\n')
+
 	fmt.Printf("Write word or sentence: ")
 	input, _ = reader.ReadString('\n')
 
 	input = strings.ToUpper(input)
 
-	// output = coder(input)
-	output = decoder(input)
+	if coder_option == "1" {
+		output = coder(input)
+	} else if coder_option == "2" {
+		output = decoder(input)
+	} else {
+		fmt.Println("WRONG OPTION")
+	}
 
 	fmt.Println(output)
 }
