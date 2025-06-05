@@ -78,8 +78,8 @@ func main() {
 
 	input = strings.ToUpper(input)
 
-	output = coder(input)
-	// output = decoder(input)
+	// output = coder(input)
+	output = decoder(input)
 
 	fmt.Println(output)
 }
@@ -111,16 +111,15 @@ func coder(str string) string {
 func decoder(str string) string {
 	var result string
 
-	words := strings.Split(str, " ")
+	cleaned := strings.TrimSpace(str)
+	words := strings.Fields(cleaned)
+	fmt.Println(words)
 
 	for _, word := range words {
-		// runes := []rune(word)
-		element, _ := reverseMorseCode[string(word)]
-		result += element + " "
-
-		// for _, rune := range runes {
-
-		// }
+		fmt.Println(word)
+		element, _ := reverseMorseCode[word]
+		fmt.Println(element)
+		result += element
 	}
 
 	return result
